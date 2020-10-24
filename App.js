@@ -13,15 +13,19 @@ class UI {
         const productList = document.getElementById('product-list');
         const element = document.createElement('div');
         element.innerHTML = `
-            <div class="card text-center mb-4">
-                <div class="card-body">
-                    ${product.brand} ${product.model} 
-                    $${product.price}
-                    <a href="#" class="btn btn-danger" name="delete">Delete</a>
-                </div>
-            </div>
+        <img  src="img/${product.brand}-${product.model}.png" class="card-img-top pt-4" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> ${product.brand} ${product.model}</h5>
+          <p class="card-text">$${product.price}</p>
+          <a href="#" class="btn btn-primary col-8">Buy</a>
+          <a href="#"  name="delete">Delete</a>
+        </div>     
         `;
         productList.appendChild(element);
+        element.classList.add('card');
+        element.classList.add('col-md-6');
+        element.classList.add('col-lg-4');
+        
     }
 
     resetForm() {
