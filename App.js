@@ -1,9 +1,10 @@
 // Product Constructor
 class Product {
-    constructor(brand, model, price) {
+    constructor(brand, model, price, imgurl) {
         this.brand = brand;
         this.model = model;
         this.price = price;
+        this.imgurl = imgurl;
     }
 }
 
@@ -13,7 +14,9 @@ class UI {
         const productList = document.getElementById('product-list');
         const element = document.createElement('div');
         element.innerHTML = `
-        <img  src="img/${product.brand}-${product.model}.png" class="card-img-top pt-4" alt="...">
+        <div class="containerimg">
+        <img  src="${product.imgurl}" class="card-img-top pt-4" alt="...">
+        </div>
         <div class="card-body">
           <h5 class="card-title"> ${product.brand} ${product.model}</h5>
           <p class="card-text">$${product.price}</p>
@@ -62,15 +65,16 @@ document.getElementById('product-form')
         const brand = document.getElementById('brand').value,
             model = document.getElementById('model').value,
             price = document.getElementById('price').value;
-
-        // Create a new Oject Product
-        const product = new Product(brand, model, price);
+            imgurl = document.getElementById('imgurl').value;
+    
+            // Create a new Oject Product
+        const product = new Product(brand, model, price, imgurl);
 
         // Create a new UI
         const ui = new UI();
 
         // Input User Validation
-        if (brand === '' || model === '' || price === '') {
+        if (brand === '' || model === '' || price === '' || imgurl === '') {
            return ui.showMessage('Please Insert data in all fields', 'danger');
         }
 
@@ -92,13 +96,21 @@ document.getElementById('product-list')
 
 // Productos de base
 window.onload = () => {
-    const product1 = new Product ("Nokia", "7.2", 309.31)
+    const product1 = new Product ("Nokia", "7.2", 309.31,"https://images.ctfassets.net/wcfotm6rrl7u/1ePYJvxS7QH0mEhCkssf0D/c2858edf33d2f97c2619ddb50bd30c6d/nokia_7_2-front_back-cyan_green.png?w=230&h=230&fit=pad&bg=rgb:fff")
     const homeui = new UI();
     homeui.addProduct(product1);
-    const product2 = new Product ("Nokia", "6.2", 249.00)
+    const product2 = new Product ("Nokia", "6.2", 249.00,"https://images.ctfassets.net/wcfotm6rrl7u/21STLirH16JPA0KmAq2blL/c688e4d3f50e50c57ffd62e3ee214e32/nokia_6_2-front_back-ice.png?w=230&h=230&fit=pad&bg=rgb:fff")
     homeui.addProduct(product2);
-    const product3 = new Product ("Nokia", "5.3", 199.00)
+    const product3 = new Product ("Nokia", "5.3", 199.00,"https://images.ctfassets.net/wcfotm6rrl7u/2Obq6PBk4Itttstt47qoG4/0caca27b1e3ff118f9580420650a57b6/nokia_5_3-front_back-Cyan.png?w=230&h=230&fit=pad&bg=rgb:fff")
     homeui.addProduct(product3);
     
+    const product4 = new Product ("Samsung", "Galaxy Z Flip", 199.00,"https://http2.mlstatic.com/D_NQ_NP_794686-MLA41702680420_052020-O.webp")
+    homeui.addProduct(product4);
+    const product5 = new Product ("Samsung", "Galaxy S10+", 250.00,"https://http2.mlstatic.com/D_NQ_NP_998561-MLA43684142816_102020-V.webp")
+    homeui.addProduct(product5);
+    const product6 = new Product ("Samsung", "Galaxy S20+", 350.00,"https://http2.mlstatic.com/D_NQ_NP_672070-MLA43136011463_082020-V.webp")
+    homeui.addProduct(product6);
+
+
 
 }
