@@ -7,3 +7,22 @@
 .containerimg{
     height: 146px;
 }
+
+.banner{
+    width: 100%;
+    height: calc((100vh - 88.88px)/3);
+}
+
+
+
+.menu-icon{
+    cursor: pointer;
+    list-style: none;
+    background-image: url(https://www.pngfind.com/pngs/m/306-3068016_trash-svg-png-icon-free-download-transparent-png.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    margin: auto 20px;
+}

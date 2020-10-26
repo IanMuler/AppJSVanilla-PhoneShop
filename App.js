@@ -20,9 +20,11 @@ class UI {
         <div class="card-body">
           <h5 class="card-title"> ${product.brand} ${product.model}</h5>
           <p class="card-text">$${product.price}</p>
-          <a href="#" class="btn btn-primary col-8">Buy</a>
-          <a href="#"  name="delete">Delete</a>
-        </div>     
+          <div class="row">
+          <a href="#" class="btn btn-primary col-4 offset-3">Buy</a>
+          <a class="menu-icon" name="delete" href=""></a>
+          </div>     
+       </div>     
         `;
         productList.appendChild(element);
         element.classList.add('card');
@@ -37,8 +39,7 @@ class UI {
 
     deleteProduct(element) {
         if (element.name === 'delete') {
-            element.parentElement.parentElement.remove();
-            this.showMessage('Product Deleted Successfully', 'info');
+            element.parentElement.parentElement.parentElement.remove();
         }
     }
 
@@ -89,6 +90,11 @@ document.getElementById('product-list')
         e.preventDefault();
     });
 
+document.getElementById('nokia')
+    .addEventListener('selected', function(){
+        alert('hola');
+    });
+
 // Productos de base
 window.onload = () => {
     const product1 = new Product ("Nokia", "7.2", 309.31,"https://images.ctfassets.net/wcfotm6rrl7u/1ePYJvxS7QH0mEhCkssf0D/c2858edf33d2f97c2619ddb50bd30c6d/nokia_7_2-front_back-cyan_green.png?w=230&h=230&fit=pad&bg=rgb:fff")
@@ -106,6 +112,10 @@ window.onload = () => {
     const product6 = new Product ("Samsung", "Galaxy S20+", 350.00,"https://http2.mlstatic.com/D_NQ_NP_672070-MLA43136011463_082020-V.webp")
     homeui.addProduct(product6);
 
-
-
+    const product7 = new Product ("Xiaomi", "Redmi 9a", 350.00,"https://http2.mlstatic.com/D_NQ_NP_955855-MLA43167718739_082020-V.webp")
+    homeui.addProduct(product7);
+    const product8 = new Product ("Xiaomi", "Redmi Note 9", 450.00,"https://http2.mlstatic.com/D_NQ_NP_929863-MLA42643560788_072020-V.webp")
+    homeui.addProduct(product8);
+    const product9 = new Product ("Xiaomi", "Redmi Note 8", 250.00,"https://http2.mlstatic.com/D_NQ_NP_796078-MLA40021979706_122019-V.webp")
+    homeui.addProduct(product9);
 }
