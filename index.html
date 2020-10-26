@@ -27,11 +27,11 @@
             <span class="sr-only">(current)</span>
           </a>  
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             BRANDS
           </a>
-          <div id="brand-selector" class="dropdown-menu" aria-labelledby="navbarDropdown" style="max-width: 200px;">
+          <div id="brand-selector" class="dropdown-menu pt-0 pb-0" aria-labelledby="navbarDropdown" style="max-width: 200px;">
             <a id="Nokia" class="dropdown-item" href="#">Nokia</a>
             <a  id="Samsung" class="dropdown-item" href="#">Samsung</a>
             <a  id="Xiaomi" class="dropdown-item" href="#">Xiaomi</a>
@@ -51,9 +51,9 @@
         <div class="card-header">
           <h4>Add A Product</h4>
         </div>
-        <form  class="card-body">
+        <form id="product-form"  class="card-body" autocomplete="off">
           <div class="form-group">
-            <select class="form-control">
+            <select id="brand" class="form-control">
               <option value="" selected hidden>Brand</option>
               <option value="Nokia">Nokia</option>
               <option value="Samsung">Samsung</option>
@@ -61,18 +61,22 @@
             </select>
           </div>
           <div class="form-group">
-            <input type="text" id="model" step="0.01" placeholder="Model" class="form-control" required>
+            <input type="text" id="model" placeholder="Model" class="form-control" required>
           </div>
-          <div class="form-group">
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">US$</span>
+            </div>
             <input type="number" id="price" placeholder="Price" class="form-control" required>
           </div>
           <div class="form-group">
             <input type="text" id="imgurl" placeholder="Image URL" class="form-control" required>
           </div>
-          <input id="product-form" type="button" value="Save" class="btn btn-primary btn-block">
+          <input id="product-save" type="button" value="Save" class="btn btn-primary btn-block">
         </form>
       </div>
     </div>
+    <div id="message"></div>
   </div>
 </div>
 

@@ -47,15 +47,11 @@ class UI {
     }
 
     showMessage(message, cssClass) {
-        const div = document.createElement('div');
+        var box = document.getElementById("message");
+        var div = document.createElement("div");
         div.className = `alert alert-${cssClass} mt-2`;
         div.appendChild(document.createTextNode(message));
-        // Show in The DOM
-        const container = document.querySelector('.container');
-        const app = document.querySelector('#App');
-        // Insert Message in the UI
-        container.insertBefore(div, app);
-        // Remove the Message after 3 seconds
+        box.appendChild(div);
         setTimeout(function () {
             document.querySelector('.alert').remove();
         }, 3000);
@@ -68,26 +64,30 @@ document.getElementById('btn-modal')
     .addEventListener('click', function (){
         $('#ModalApp').modal()
     });
-document.getElementById('product-form')
-    .addEventListener('submit', function (e) {
+document.getElementById('product-save')
+    .addEventListener('click', function () {
 
-        const brand = document.getElementById('brand').value,
-            model = document.getElementById('model').value,
-            price = document.getElementById('price').value,
-            imgurl = document.getElementById('imgurl').value;
+      const brand = document.getElementById('brand').value;
+      const model = document.getElementById('model').value;
+      const price = document.getElementById('price').value;
+      const imgurl = document.getElementById('imgurl').value;
 
+         // Create a new Oject Product
+         const product = new Product(brand, model, price, imgurl);
 
-        // Create a new Oject Product
-        const product = new Product(brand, model, price, imgurl);
+         // Create a new UI
+         const ui = new UI();
 
-        // Create a new UI
-        const ui = new UI();
-
-        // Save Product
-        ui.addProduct(product);
-        ui.showMessage('Product Added Successfully', 'success');
-        ui.resetForm();
-        e.preventDefault();
+        // Input User Validation
+         if(brand === '' || model === '' || price === '' || imgurl === '') {
+            return ui.showMessage('Please Insert data in all fields', 'danger');
+        }
+ 
+         // Save Product
+         ui.addProduct(product);
+         ui.showMessage('Product Added Successfully', 'success');
+         ui.resetForm();
+         $('.product').show();
     });
 
 document.getElementById('product-list')
