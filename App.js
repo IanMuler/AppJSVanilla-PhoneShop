@@ -73,11 +73,6 @@ document.getElementById('product-form')
         // Create a new UI
         const ui = new UI();
 
-        // Input User Validation
-        if (brand === '' || model === '' || price === '' || imgurl === '') {
-           return ui.showMessage('Please Insert data in all fields', 'danger');
-        }
-
         // Save Product
         ui.addProduct(product);
         ui.showMessage('Product Added Successfully', 'success');
